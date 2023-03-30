@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import SaveTodoButton from '@/components/todo-buttons/save-todo-button.vue';
-  import CancelTodoButton from '@/components/todo-buttons/cancel-todo-button.vue';
+  import SaveTodoButton from '@/components/todo/todo-buttons/save-todo-button.vue';
+  import CancelTodoButton from '@/components/todo/todo-buttons/cancel-todo-button.vue';
 </script>
 
 <template>

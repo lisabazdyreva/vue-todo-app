@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import EditTodoButton from '@/components/todo-buttons/edit-todo-button.vue';
-  import RemoveTodoButton from '@/components/todo-buttons/remove-todo-button.vue';
+  import EditTodoButton from '@/components/todo/todo-buttons/edit-todo-button.vue';
+  import RemoveTodoButton from '@/components/todo/todo-buttons/remove-todo-button.vue';
 </script>
 
 <template>
@@ -23,10 +23,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 2px solid green;
+    border: 1px solid var(--dark-violet-transparent);
+    box-shadow: 1px 3px 5px var(--shadow-color);
     border-radius: 5px;
-    padding: 10px;
-    margin: 5px 0;
+    padding: 15px;
+    margin: 10px 0;
   }
 
   .todo-list__item-title {

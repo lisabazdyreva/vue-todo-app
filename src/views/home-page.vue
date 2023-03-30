@@ -5,7 +5,7 @@
 
 <template>
   <main class="main body__main">
-    <h2 class="title main__title">Your todo list of tasks:</h2>
+    <h2 class="title main__title">Your todo list of tasks</h2>
     <TodoList />
     <Pagination />
   </main>
@@ -19,7 +19,8 @@
   }
 
   .title {
-    color: darkslategray;
+    color: var(--dark-violet);
+    text-transform: uppercase;
     text-align: center;
     margin: 100px 0 40px;
   }
