@@ -1,23 +1,29 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
-import HelloWorld from './components/HelloWorld.vue';
+<script lang="ts" setup>
+  import HomePage from '@/views/home-page.vue';
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <header class="header body__header">Todo app</header>
+  <HomePage />
+  <footer class="footer body__footer">App with Vue 3</footer>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .header {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 20px;
+    background-color: forestgreen;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+
+  .footer {
+    display: flex;
+    flex: 0 0 auto;
+    padding: 20px;
+    background-color: darkgreen;
+    color: white;
+  }
+</style>
