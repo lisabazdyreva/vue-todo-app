@@ -1,4 +1,25 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { onMounted, ref } from 'vue';
+
+  const isPasswordShowed = ref(false);
+
+  const passwordInput = ref(null);
+  const usernameInput = ref(null);
+
+  const usernameValue = ref('');
+  const passwordValue = ref('');
+
+  const showPassword = () => {
+    isPasswordShowed.value = !isPasswordShowed.value;
+  };
+  // TODO bug with focus
+  onMounted(() => {
+    if (usernameInput.value) {
+      const input = usernameInput.value as HTMLInputElement;
+      input.focus();
+    }
+  });
+</script>
 
 <template>
   <main class="main body__main">
@@ -7,16 +28,31 @@
     <form class="login-form main__login-form">
       <div class="login-form__field user-name">
         <label class="login-form__label" for="user-name">Username:</label>
-        <input class="login-form__input" id="user-name" type="text" />
-        <span class="login-form__validation-message login-form__validation-message--warning">
-          Correct
-        </span>
+        <input
+          class="login-form__input"
+          v-model="usernameValue"
+          id="user-name"
+          type="text"
+          ref="usernameInput"
+        />
+        <span class="login-form__validation-message login-form__validation-message--warning"
+          >Correct</span
+        >
       </div>
 
       <div class="login-form__field password">
         <label class="login-form__label" for="password">Password:</label>
-        <input class="login-form__input" id="password" type="password" />
-        <button class="show-password-button" type="button">Show</button>
+        <input
+          class="login-form__input"
+          id="password"
+          v-model="passwordValue"
+          :type="isPasswordShowed ? 'text' : 'password'"
+          ref="passwordInput"
+        />
+        <span class="login-form__validation-message login-form__validation-message--warning"
+          >Correct</span
+        >
+        <button class="show-password-button" type="button" @click="showPassword">Show</button>
       </div>
 
       <button class="login-button button" type="submit">Log in</button>
@@ -89,9 +125,8 @@
   }
 
   .show-password-button {
-    color: black;
     position: absolute;
-    top: 41px;
+    top: 48px;
     right: 5px;
     padding: 0;
     background-color: transparent;
