@@ -4,8 +4,13 @@
 </template>
 
 <style scoped>
-  .remove-button {
-    background-color: crimson;
-    color: white;
+  .content-wrapper--dark .remove-button {
+    background-color: var(--dark-violet-theme-bg);
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .remove-button {
+    background-color: var(--violet-blue);
+    color: var(--white);
   }
 </style>

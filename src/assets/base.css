@@ -1,4 +1,8 @@
 :root {
+  /* violet theme */
+  --dark-violet-theme-bg: #100e1a;
+  --dark-violet-theme-color: #f6d9fa;
+  --deep-dark-violet: #272040;
   --dark-violet: #31294c;
   --dark-violet-transparent: rgba(49, 41, 76, 0.2);
   --semi-dark-violet: #5756bb;

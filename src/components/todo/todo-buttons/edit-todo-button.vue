@@ -5,8 +5,13 @@
 </template>
 
 <style scoped>
-  .edit-button {
-    background-color: springgreen;
-    color: darkslategray;
+  .content-wrapper--dark .edit-button {
+    background-color: var(--violet-blue);
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .edit-button {
+    background-color: var(--pink);
+    color: var(--dark-violet);
   }
 </style>

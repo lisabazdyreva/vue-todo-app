@@ -32,10 +32,17 @@
     justify-content: center;
     align-items: center;
     gap: 20px;
-    background-color: darkslategray;
     border-radius: 10px;
     padding: 20px;
-    margin: 0 auto;
+    margin: 100px auto 0;
+  }
+
+  .content-wrapper--dark .login-form {
+    background-color: var(--dark-violet);
+  }
+
+  .content-wrapper--light .login-form {
+    background-color: var(--semi-dark-violet);
   }
 
   .login-form__field {
@@ -91,10 +98,6 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-  }
-
-  .login-button {
-    color: white;
-    background-color: green;
+    color: var(--dark-violet);
   }
 </style>

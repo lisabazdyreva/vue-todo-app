@@ -25,14 +25,26 @@
 <style scoped>
   .navigation-list {
     display: flex;
-    gap: 20px;
+    gap: 40px;
+    list-style: none;
     padding: 0;
     margin: 0;
-    list-style: none;
   }
 
   .navigation-list__link {
-    color: var(--white);
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 500;
+
     text-decoration: none;
+    padding: 20px 0;
+  }
+
+  .content-wrapper--dark .navigation-list__link {
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .navigation-list__link {
+    color: var(--white);
   }
 </style>

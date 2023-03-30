@@ -1,6 +1,13 @@
 <script setup lang="ts">
   import Navigation from '@/components/header/navigation.vue';
   import NavigationButtons from '@/components/header/navigation-buttons.vue';
+  import { useLightModeStore } from '../../stores/light-mode';
+  import { storeToRefs } from 'pinia';
+
+  const store = useLightModeStore();
+
+  const { isLight } = storeToRefs(store);
+  const { toggleLightMode } = store;
 </script>
 
 <template>
@@ -9,25 +16,57 @@
 
     <Navigation />
     <NavigationButtons />
+    <button class="light-mode-button button" type="button" @click="toggleLightMode">
+      {{ isLight ? 'Dark' : 'Light' }} mode
+    </button>
   </header>
 </template>
 
-<style scoped>
+<style>
   .header {
     display: flex;
     flex: 0 0 auto;
     align-items: center;
     justify-content: space-between;
     gap: 10px;
-    padding: 20px;
+    padding: 0 40px;
+    box-shadow: 0 2px 10px var(--shadow-color);
+  }
+
+  .content-wrapper--dark .header {
+    background-color: var(--deep-dark-violet);
+  }
+
+  .content-wrapper--light .header {
     background-color: var(--violet-blue);
-    color: var(--white);
-    text-transform: uppercase;
-    font-weight: 700;
   }
 
   .header__title {
     font-size: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
     margin: 0;
+  }
+
+  .content-wrapper--dark .header__title {
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .header__title {
+    color: var(--white);
+  }
+
+  .light-mode-button {
+    min-width: 150px;
+  }
+
+  .content-wrapper--dark .light-mode-button {
+    background-color: var(--violet-blue);
+    color: var(--white);
+  }
+
+  .content-wrapper--light .light-mode-button {
+    background-color: var(--dark-violet);
+    color: var(--white);
   }
 </style>
