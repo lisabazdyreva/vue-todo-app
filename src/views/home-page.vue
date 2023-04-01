@@ -1,13 +1,28 @@
 <script setup lang="ts">
   import TodoList from '@/components/todo/todo-list.vue';
   import Pagination from '@/components/pagination.vue';
+  import { onMounted } from 'vue';
+  import { useTodoStore } from '../stores/todos';
+
+
+  const onButtonAddTodoHandler = (evt: Event) => {
+    console.log('clicked')
+  };
+
+  const store = useTodoStore();
+
+  const {fetchTodos} = store;
+
+  onMounted(() => {
+    fetchTodos();
+  });
 </script>
 
 <template>
   <main class="main body__main">
     <div class="main__wrapper">
       <h2 class="title main__title">Your todo list of tasks</h2>
-      <button class="create-todo-button button" type="button">Add new</button>
+      <button class="create-todo-button button" type="button" @click='onButtonAddTodoHandler'>Add new</button>
     </div>
 
     <TodoList />

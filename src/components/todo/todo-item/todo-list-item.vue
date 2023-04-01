@@ -1,14 +1,17 @@
 <script setup lang="ts">
   import EditTodoButton from '@/components/todo/todo-buttons/edit-todo-button.vue';
   import RemoveTodoButton from '@/components/todo/todo-buttons/remove-todo-button.vue';
-  const props = defineProps({ order: Number });
+  import type { Todo } from '../../../types/todo';
+
+  const props = defineProps<{order: number, todo: Todo}>();
+
 </script>
 
 <template>
   <li class="todo-list__item">
     <div class="todo-list__item-info">
       <span class="todo-list__item-order">{{ props.order }}. </span>
-      <span class="todo-list__item-title">pet cats</span>
+      <span class="todo-list__item-title">{{props.todo.title}}</span>
     </div>
     <div class="todo-list__buttons">
       <EditTodoButton />

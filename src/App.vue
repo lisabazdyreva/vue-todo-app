@@ -16,8 +16,8 @@
     :class="[isLight ? 'content-wrapper--light' : 'content-wrapper--dark']"
   >
     <Header />
-    <!--    <HomePage />-->
-    <LoginPage />
+        <HomePage />
+<!--    <LoginPage />-->
     <footer class="footer body__footer">App with Vue 3</footer>
   </div>
 </template>

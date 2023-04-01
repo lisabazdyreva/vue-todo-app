@@ -1,0 +1,34 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "title": "Do something nice for someone I care about",
+      "description": "lorem",
+      "completed": true
+    },
+    {
+      "id": 2,
+      "todo": "Memorize the fifty states and their capitals",
+      "description": "lorem",
+      "completed": false
+    },
+    {
+      "id": 3,
+      "todo": "Watch a classic movie",
+      "description": "lorem",
+      "completed": false
+    },
+    {
+      "id": 4,
+      "todo": "Contribute code or a monetary donation to an open-source software project",
+      "description": "lorem",
+      "completed": false
+    },
+    {
+      "id": 5,
+      "todo": "Solve a Rubik's cube",
+      "description": "lorem",
+      "completed": false
+    }
+  ]
+}

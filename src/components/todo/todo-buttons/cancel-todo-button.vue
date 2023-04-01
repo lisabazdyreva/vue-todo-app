@@ -1,12 +1,17 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="button cancel-button" type="button">Cancel</button>
+  <button class="button cancel-button" type="button" @click='$emit("cancelButtonHandler")'>Cancel</button>
 </template>
 
 <style scoped>
-  .cancel-button {
-    background-color: dodgerblue;
-    color: white;
+  .content-wrapper--dark .cancel-button {
+    background-color: var(--dark-violet-theme-bg);
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .cancel-button {
+    background-color: var(--violet-blue);
+    color: var(--white);
   }
 </style>
