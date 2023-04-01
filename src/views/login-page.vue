@@ -13,6 +13,11 @@
     isPasswordShowed.value = !isPasswordShowed.value;
   };
   // TODO bug with focus
+
+  const onLoginFormSubmitHandler = () => {
+
+  };
+
   onMounted(() => {
     if (usernameInput.value) {
       const input = usernameInput.value as HTMLInputElement;
@@ -25,7 +30,7 @@
   <main class='main body__main'>
     <h2 class='title main__title'>Please login</h2>
 
-    <form class='login-form main__login-form'>
+    <form class='login-form main__login-form' @submit.prevent='onLoginFormSubmitHandler'>
       <div class='login-form__field user-name'>
         <label class='login-form__label' for='user-name'>Username:</label>
         <input
