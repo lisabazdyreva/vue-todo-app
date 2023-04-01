@@ -1,5 +1,5 @@
 <script lang='ts' setup>
-  import Header from '@/components/header/header.vue';
+  import Header from '@/components/main-header/main-header.vue';
 
   import { useLightModeStore } from './stores/light-mode';
   import { storeToRefs } from 'pinia';

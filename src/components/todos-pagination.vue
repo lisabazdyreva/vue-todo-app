@@ -1,10 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
 <template>
-  <ul class="pagination-list">
-    <li class="pagination-list__item">1</li>
-    <li class="pagination-list__item">2</li>
-    <li class="pagination-list__item">3</li>
+  <ul class='pagination-list'>
+    <li class='pagination-list__item'>1</li>
+    <li class='pagination-list__item'>2</li>
+    <li class='pagination-list__item'>3</li>
   </ul>
 </template>
 

@@ -1,22 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
 <template>
-  <nav class="navigation">
-    <ul class="navigation-list">
-      <li class="navigation-list__item">
-        <a class="navigation-list__link" href="#">Home</a>
+  <nav class='navigation'>
+    <ul class='navigation-list'>
+      <li class='navigation-list__item'>
+        <RouterLink class='navigation-list__link' to='/todos'>Home</RouterLink>
+      </li>
+      <li class='navigation-list__item'>
+        <a class='navigation-list__link' href='#'>Calendar</a>
       </li>
 
-      <li class="navigation-list__item">
-        <a class="navigation-list__link" href="#">Calendar</a>
+      <li class='navigation-list__item'>
+        <a class='navigation-list__link' href='#'>Favorites</a>
       </li>
 
-      <li class="navigation-list__item">
-        <a class="navigation-list__link" href="#">Favorites</a>
-      </li>
-
-      <li class="navigation-list__item">
-        <a class="navigation-list__link" href="#">About</a>
+      <li class='navigation-list__item'>
+        <a class='navigation-list__link' href='#'>About</a>
       </li>
     </ul>
   </nav>

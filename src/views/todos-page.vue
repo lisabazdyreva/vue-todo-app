@@ -1,6 +1,6 @@
 <script setup lang='ts'>
   import TodoList from '@/components/todo/todo-list.vue';
-  import Pagination from '@/components/pagination.vue';
+  import Pagination from '@/components/todos-pagination.vue';
   import { onMounted } from 'vue';
   import { useTodosStore } from '../stores/todos';
   import { useProcessStore } from '../stores/process';

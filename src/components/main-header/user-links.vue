@@ -1,9 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
 <template>
-  <div class="navigation-buttons">
+  <div class='navigation-buttons'>
     <!--    <a class="user-profile-link" href="#">User Profile</a>-->
-    <a class="login-link" href="#">Log in</a>
+    <RouterLink class='login-link' to='/login'>Log in</RouterLink>
   </div>
 </template>
 
