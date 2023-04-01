@@ -1,7 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang='ts'></script>
 
 <template>
-  <button class="button cancel-button" type="button" @click='$emit("cancelButtonHandler")'>Cancel</button>
+  <button class='button cancel-button' type='button' @click='$emit("cancelButtonHandler")'>Cancel</button>
 </template>
 
 <style scoped>

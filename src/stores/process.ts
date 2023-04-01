@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import {ref} from 'vue';
+import { ref } from 'vue';
 
 export const useProcessStore = defineStore('process', () => {
   const isAddNewTodoActive = ref(false);
@@ -12,5 +12,5 @@ export const useProcessStore = defineStore('process', () => {
     isAddNewTodoActive.value = false;
   };
 
-  return {isAddNewTodoActive, setIsAddNewTodoActive, resetIsAddNewTodoActive};
+  return { isAddNewTodoActive, setIsAddNewTodoActive, resetIsAddNewTodoActive };
 });

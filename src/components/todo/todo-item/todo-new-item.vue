@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang='ts'>
   import { ref } from 'vue';
   import { useTodosStore } from '../../../stores/todos';
   import { storeToRefs } from 'pinia';
@@ -8,16 +8,16 @@
   import CancelTodoButton from '@/components/todo/todo-buttons/cancel-todo-button.vue';
 
   const storeTodos = useTodosStore();
-  const {addTodo} = storeTodos;
-  const {todos} = storeToRefs(storeTodos);
+  const { addTodo } = storeTodos;
+  const { todos } = storeToRefs(storeTodos);
 
   const storeProcess = useProcessStore();
-  const {resetIsAddNewTodoActive} = storeProcess;
+  const { resetIsAddNewTodoActive } = storeProcess;
 
   const todoTitle = ref('');
 
   const onButtonSaveClickHandler = () => {
-    addTodo({id: todos.value.length, title: todoTitle.value, description: 'hi', completed: false});
+    addTodo({ id: todos.value.length, title: todoTitle.value, description: 'hi', completed: false });
     resetIsAddNewTodoActive();
     todoTitle.value = '';
   };
@@ -29,13 +29,13 @@
 </script>
 
 <template>
-  <li class="todo-list__item">
-    <label for="title">Title:</label>
-    <input id="title" type="text" v-model='todoTitle' />
+  <li class='todo-list__item'>
+    <label for='title'>Title:</label>
+    <input id='title' type='text' v-model='todoTitle' />
 
-    <div class="todo-list__buttons">
-      <SaveTodoButton @save-button-handler='onButtonSaveClickHandler'/>
-      <CancelTodoButton @cancel-button-handler='onButtonCancelClickHandler'/>
+    <div class='todo-list__buttons'>
+      <SaveTodoButton @save-button-handler='onButtonSaveClickHandler' />
+      <CancelTodoButton @cancel-button-handler='onButtonCancelClickHandler' />
     </div>
   </li>
 </template>

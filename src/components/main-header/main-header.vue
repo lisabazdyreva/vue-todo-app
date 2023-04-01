@@ -1,6 +1,6 @@
-<script setup lang="ts">
-  import Navigation from '@/components/header/navigation.vue';
-  import NavigationButtons from '@/components/header/navigation-buttons.vue';
+<script setup lang='ts'>
+  import NavigationLinks from '@/components/main-header/navigation-links.vue';
+  import UserLinks from '@/components/main-header/user-links.vue';
   import { useLightModeStore } from '../../stores/light-mode';
   import { storeToRefs } from 'pinia';
 
@@ -11,12 +11,12 @@
 </script>
 
 <template>
-  <header class="header body__header">
-    <h1 class="header__title">Todo app</h1>
+  <header class='header body__header'>
+    <h1 class='header__title'>Todo app</h1>
 
-    <Navigation />
-    <NavigationButtons />
-    <button class="light-mode-button button" type="button" @click="toggleLightMode">
+    <NavigationLinks />
+    <UserLinks />
+    <button class='light-mode-button button' type='button' @click='toggleLightMode'>
       {{ isLight ? 'Dark' : 'Light' }} mode
     </button>
   </header>

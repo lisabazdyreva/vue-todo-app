@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 
 </script>
 
 <template>
-  <button class="button save-button" type="button" @click='$emit("saveButtonHandler")'>Save</button>
+  <button class='button save-button' type='button' @click='$emit("saveButtonHandler")'>Save</button>
 </template>
 
 <style scoped>
