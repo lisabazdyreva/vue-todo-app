@@ -1,8 +1,9 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import NavigationLinks from '@/components/main-header/navigation-links.vue';
   import UserLinks from '@/components/main-header/user-links.vue';
   import { useLightModeStore } from '../../stores/light-mode';
   import { storeToRefs } from 'pinia';
+  import { Route } from '@/utils/const';
 
   const store = useLightModeStore();
 
@@ -11,12 +12,14 @@
 </script>
 
 <template>
-  <header class='header body__header'>
-    <h1 class='header__title'>Todo app</h1>
+  <header class="header body__header">
+    <h1 class="header__title">
+      <RouterLink class="header__logo-link" :to="Route.Todos">Todo app</RouterLink>
+    </h1>
 
     <NavigationLinks />
     <UserLinks />
-    <button class='light-mode-button button' type='button' @click='toggleLightMode'>
+    <button class="light-mode-button button" type="button" @click="toggleLightMode">
       {{ isLight ? 'Dark' : 'Light' }} mode
     </button>
   </header>
@@ -54,6 +57,11 @@
 
   .content-wrapper--light .header__title {
     color: var(--white);
+  }
+
+  .header__logo-link {
+    text-decoration: none;
+    color: inherit;
   }
 
   .light-mode-button {

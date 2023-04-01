@@ -1,4 +1,4 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { onMounted, ref } from 'vue';
 
   const isPasswordShowed = ref(false);
@@ -14,9 +14,7 @@
   };
   // TODO bug with focus
 
-  const onLoginFormSubmitHandler = () => {
-
-  };
+  const onLoginFormSubmitHandler = () => {};
 
   onMounted(() => {
     if (usernameInput.value) {
@@ -27,40 +25,41 @@
 </script>
 
 <template>
-  <main class='main body__main'>
-    <h2 class='title main__title'>Please login</h2>
+  <main class="main body__main">
+    <h2 class="title main__title">Please login</h2>
 
-    <form class='login-form main__login-form' @submit.prevent='onLoginFormSubmitHandler'>
-      <div class='login-form__field user-name'>
-        <label class='login-form__label' for='user-name'>Username:</label>
+    <form class="login-form main__login-form" @submit.prevent="onLoginFormSubmitHandler">
+      <div class="login-form__field user-name">
+        <label class="login-form__label" for="user-name">Username:</label>
         <input
-          class='login-form__input'
-          v-model='usernameValue'
-          id='user-name'
-          type='text'
-          ref='usernameInput'
+          class="login-form__input"
+          v-model="usernameValue"
+          id="user-name"
+          type="text"
+          ref="usernameInput"
+          :autocomplete="false"
         />
-        <span class='login-form__validation-message login-form__validation-message--warning'
-        >Correct</span
+        <span class="login-form__validation-message login-form__validation-message--warning"
+          >Correct</span
         >
       </div>
 
-      <div class='login-form__field password'>
-        <label class='login-form__label' for='password'>Password:</label>
+      <div class="login-form__field password">
+        <label class="login-form__label" for="password">Password:</label>
         <input
-          class='login-form__input'
-          id='password'
-          v-model='passwordValue'
+          class="login-form__input"
+          id="password"
+          v-model="passwordValue"
           :type="isPasswordShowed ? 'text' : 'password'"
-          ref='passwordInput'
+          ref="passwordInput"
         />
-        <span class='login-form__validation-message login-form__validation-message--warning'
-        >Correct</span
+        <span class="login-form__validation-message login-form__validation-message--warning"
+          >Correct</span
         >
-        <button class='show-password-button' type='button' @click='showPassword'>Show</button>
+        <button class="show-password-button" type="button" @click="showPassword">Show</button>
       </div>
 
-      <button class='login-button button' type='submit'>Log in</button>
+      <button class="login-button button" type="submit">Log in</button>
     </form>
   </main>
 </template>

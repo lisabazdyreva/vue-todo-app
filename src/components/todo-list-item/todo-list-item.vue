@@ -1,15 +1,14 @@
-<script setup lang='ts'>
+<script setup lang="ts">
   import { ref } from 'vue';
-  import type { Todo } from '../../../types/todo';
-  import { useTodosStore } from '../../../stores/todos';
+  import type { Todo } from '../../types/todo';
+  import { useTodosStore } from '../../stores/todos';
 
-  import SaveTodoButton from '@/components/todo/todo-buttons/save-todo-button.vue';
-  import CancelTodoButton from '@/components/todo/todo-buttons/cancel-todo-button.vue';
-  import EditTodoButton from '@/components/todo/todo-buttons/edit-todo-button.vue';
-  import RemoveTodoButton from '@/components/todo/todo-buttons/remove-todo-button.vue';
+  import SaveTodoButton from '@/components/todo-buttons/save-todo-button.vue';
+  import CancelTodoButton from '@/components/todo-buttons/cancel-todo-button.vue';
+  import EditTodoButton from '@/components/todo-buttons/edit-todo-button.vue';
+  import RemoveTodoButton from '@/components/todo-buttons/remove-todo-button.vue';
 
-
-  const props = defineProps<{ order: number, todo: Todo }>();
+  const props = defineProps<{ order: number; todo: Todo }>();
   const title = ref(props.todo.title);
 
   const isCurrentEdit = ref(false);
@@ -39,27 +38,26 @@
     title.value = props.todo.title;
     isCurrentEdit.value = false;
   };
-
 </script>
 
 <template>
-  <li v-if='!isCurrentEdit' class='todo-list__item'>
-    <div class='todo-list__item-info'>
-      <span class='todo-list__item-order'>{{ props.order }}. </span>
-      <span class='todo-list__item-title'>{{ props.todo.title }}</span>
+  <li v-if="!isCurrentEdit" class="todo-list__item">
+    <div class="todo-list__item-info">
+      <span class="todo-list__item-order">{{ props.todo.id }}. это не точно, мб порядок </span>
+      <span class="todo-list__item-title">{{ title }}</span>
     </div>
-    <div class='todo-list__buttons'>
-      <EditTodoButton @edit-click-handler='onButtonEditClickHandler' />
-      <RemoveTodoButton @remove-button-handler='onButtonRemoveClickHandler' />
+    <div class="todo-list__buttons">
+      <EditTodoButton @edit-click-handler="onButtonEditClickHandler" />
+      <RemoveTodoButton @remove-button-handler="onButtonRemoveClickHandler" />
     </div>
   </li>
-  <li v-else class='todo-list__item'>
-    <label for='title'>Title:</label>
-    <input id='title' type='text' :value='title' @input='onTitleInputHandler' />
+  <li v-else class="todo-list__item">
+    <label for="title">Title:</label>
+    <input id="title" type="text" :value="title" @input="onTitleInputHandler" />
 
-    <div class='todo-list__buttons'>
-      <SaveTodoButton @save-button-handler='onButtonSaveClickHandler' />
-      <CancelTodoButton @cancel-button-handler='onButtonCancelClickHandler' />
+    <div class="todo-list__buttons">
+      <SaveTodoButton @save-button-handler="onButtonSaveClickHandler" />
+      <CancelTodoButton @cancel-button-handler="onButtonCancelClickHandler" />
     </div>
   </li>
 </template>

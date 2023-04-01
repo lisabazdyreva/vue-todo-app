@@ -1,9 +1,12 @@
-<script setup lang='ts'>
-  import TodoList from '@/components/todo/todo-list.vue';
-  import Pagination from '@/components/todos-pagination.vue';
+<script setup lang="ts">
+  import TodoList from '@/components/todo-list/todo-list.vue';
+  import Pagination from '@/components/todos-pagination/todos-pagination.vue';
   import { onMounted } from 'vue';
   import { useTodosStore } from '../stores/todos';
   import { useProcessStore } from '../stores/process';
+  import Sorting from '@/components/sorting/sorting.vue';
+  import Filter from '@/components/filter/filter.vue';
+  import DisplayModeButton from '@/components/todo-buttons/display-mode-button.vue';
 
   const storeProcess = useProcessStore();
   const { setIsAddNewTodoActive } = storeProcess;
@@ -21,12 +24,17 @@
 </script>
 
 <template>
-  <main class='main body__main'>
-    <div class='main__wrapper'>
-      <h2 class='title main__title'>Your todo list of tasks</h2>
-      <button class='create-todo-button button' type='button' @click='onButtonAddTodoHandler'>Add new</button>
+  <main class="main body__main">
+    <div class="main__wrapper">
+      <h2 class="title main__title">Your todo list of tasks</h2>
+      <button class="create-todo-button button" type="button" @click="onButtonAddTodoHandler">
+        Add new
+      </button>
     </div>
 
+    <Sorting />
+    <Filter />
+    <DisplayModeButton />
     <TodoList />
     <Pagination />
   </main>

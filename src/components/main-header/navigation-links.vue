@@ -1,21 +1,23 @@
-<script setup lang='ts'></script>
+<script setup lang="ts">
+  import { Route } from '@/utils/const';
+</script>
 
 <template>
-  <nav class='navigation'>
-    <ul class='navigation-list'>
-      <li class='navigation-list__item'>
-        <RouterLink class='navigation-list__link' to='/todos'>Home</RouterLink>
+  <nav class="navigation">
+    <ul class="navigation-list">
+      <li class="navigation-list__item">
+        <RouterLink class="navigation-list__link" :to="Route.Home">Home</RouterLink>
       </li>
-      <li class='navigation-list__item'>
-        <a class='navigation-list__link' href='#'>Calendar</a>
-      </li>
-
-      <li class='navigation-list__item'>
-        <a class='navigation-list__link' href='#'>Favorites</a>
+      <li class="navigation-list__item">
+        <a class="navigation-list__link" href="#">Calendar</a>
       </li>
 
-      <li class='navigation-list__item'>
-        <a class='navigation-list__link' href='#'>About</a>
+      <li class="navigation-list__item">
+        <a class="navigation-list__link" href="#">Favorites</a>
+      </li>
+
+      <li class="navigation-list__item">
+        <RouterLink class="navigation-list__link" :to="Route.About">About</RouterLink>
       </li>
     </ul>
   </nav>

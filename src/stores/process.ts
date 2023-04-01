@@ -3,6 +3,7 @@ import { ref } from 'vue';
 
 export const useProcessStore = defineStore('process', () => {
   const isAddNewTodoActive = ref(false);
+  const isBrieflyTodoDisplay = ref(true);
 
   const setIsAddNewTodoActive = () => {
     isAddNewTodoActive.value = true;
@@ -12,5 +13,15 @@ export const useProcessStore = defineStore('process', () => {
     isAddNewTodoActive.value = false;
   };
 
-  return { isAddNewTodoActive, setIsAddNewTodoActive, resetIsAddNewTodoActive };
+  const toggleIsBrieflyTodoDisplay = () => {
+    isBrieflyTodoDisplay.value = !isBrieflyTodoDisplay.value;
+  };
+
+  return {
+    isAddNewTodoActive,
+    isBrieflyTodoDisplay,
+    setIsAddNewTodoActive,
+    resetIsAddNewTodoActive,
+    toggleIsBrieflyTodoDisplay,
+  };
 });

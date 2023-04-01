@@ -1,9 +1,11 @@
-<script setup lang='ts'></script>
+<script setup lang="ts">
+  import { Route } from '@/utils/const';
+</script>
 
 <template>
-  <div class='navigation-buttons'>
+  <div class="navigation-buttons">
     <!--    <a class="user-profile-link" href="#">User Profile</a>-->
-    <RouterLink class='login-link' to='/login'>Log in</RouterLink>
+    <RouterLink class="login-link" :to="Route.Login">Log in</RouterLink>
   </div>
 </template>
 
