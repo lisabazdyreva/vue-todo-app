@@ -1,7 +1,6 @@
-<script lang="ts" setup>
-  import HomePage from '@/views/home-page.vue';
+<script lang='ts' setup>
   import Header from '@/components/header/header.vue';
-  import LoginPage from '@/views/login-page.vue';
+
   import { useLightModeStore } from './stores/light-mode';
   import { storeToRefs } from 'pinia';
 
@@ -12,13 +11,12 @@
 
 <template>
   <div
-    class="content-wrapper"
+    class='content-wrapper'
     :class="[isLight ? 'content-wrapper--light' : 'content-wrapper--dark']"
   >
     <Header />
-        <HomePage />
-<!--    <LoginPage />-->
-    <footer class="footer body__footer">App with Vue 3</footer>
+    <RouterView />
+    <footer class='footer body__footer'>App with Vue 3</footer>
   </div>
 </template>
 
