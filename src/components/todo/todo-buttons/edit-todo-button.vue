@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="button edit-button" type="button">Edit</button>
+  <button class="button edit-button" type="button" @click='$emit("editClickHandler")'>Edit</button>
 </template>
 
 <style scoped>

@@ -2,16 +2,19 @@
   import TodoListItem from '@/components/todo/todo-item/todo-list-item.vue';
   import TodoNewItem from '@/components/todo/todo-item/todo-new-item.vue';
   import { storeToRefs } from 'pinia';
-  import { useTodoStore } from '../../stores/todos';
+  import { useTodosStore } from '../../stores/todos';
+  import { useProcessStore } from '../../stores/process';
 
-  const store = useTodoStore();
+  const storeTodos = useTodosStore();
+  const {todos} = storeToRefs(storeTodos);
 
-  const {todos} = storeToRefs(store);
+  const storeProcess = useProcessStore();
+  const {isAddNewTodoActive} = storeToRefs(storeProcess);
 </script>
 
 <template>
   <ul class="todo-list main__todo-list">
-    <TodoNewItem />
+    <TodoNewItem v-if='isAddNewTodoActive'/>
     <TodoListItem v-for="(todo, index) in todos" :key="todo.id" :order="index + 1" :todo='todo'/>
   </ul>
 </template>

@@ -1,21 +1,65 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
+  import type { Todo } from '../../../types/todo';
+  import { useTodosStore } from '../../../stores/todos';
+
+  import SaveTodoButton from '@/components/todo/todo-buttons/save-todo-button.vue';
+  import CancelTodoButton from '@/components/todo/todo-buttons/cancel-todo-button.vue';
   import EditTodoButton from '@/components/todo/todo-buttons/edit-todo-button.vue';
   import RemoveTodoButton from '@/components/todo/todo-buttons/remove-todo-button.vue';
-  import type { Todo } from '../../../types/todo';
+
 
   const props = defineProps<{order: number, todo: Todo}>();
+  const title = ref(props.todo.title);
+
+  const isCurrentEdit = ref(false);
+
+  const storeTodos = useTodosStore();
+  const {editTodo, removeTodo} = storeTodos;
+
+  const onTitleInputHandler = (evt: Event) => {
+    const target = evt.target as HTMLInputElement;
+    title.value = target.value;
+  };
+
+  const onButtonEditClickHandler = () => {
+    isCurrentEdit.value = true;
+  };
+
+  const onButtonRemoveClickHandler = () => {
+    removeTodo(props.todo.id);
+  };
+
+  const onButtonSaveClickHandler = () => {
+    editTodo({...props.todo, title: title.value});
+    isCurrentEdit.value = false;
+  };
+
+  const onButtonCancelClickHandler = () => {
+    title.value = props.todo.title;
+    isCurrentEdit.value = false;
+  }
 
 </script>
 
 <template>
-  <li class="todo-list__item">
+  <li v-if='!isCurrentEdit' class="todo-list__item">
     <div class="todo-list__item-info">
       <span class="todo-list__item-order">{{ props.order }}. </span>
       <span class="todo-list__item-title">{{props.todo.title}}</span>
     </div>
     <div class="todo-list__buttons">
-      <EditTodoButton />
-      <RemoveTodoButton />
+      <EditTodoButton @edit-click-handler='onButtonEditClickHandler' />
+      <RemoveTodoButton @remove-button-handler='onButtonRemoveClickHandler'/>
+    </div>
+  </li>
+  <li v-else class="todo-list__item">
+    <label for="title">Title:</label>
+    <input id="title" type="text" :value='title' @input='onTitleInputHandler'/>
+
+    <div class="todo-list__buttons">
+      <SaveTodoButton @save-button-handler='onButtonSaveClickHandler' />
+      <CancelTodoButton @cancel-button-handler='onButtonCancelClickHandler' />
     </div>
   </li>
 </template>

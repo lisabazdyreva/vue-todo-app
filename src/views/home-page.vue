@@ -2,16 +2,18 @@
   import TodoList from '@/components/todo/todo-list.vue';
   import Pagination from '@/components/pagination.vue';
   import { onMounted } from 'vue';
-  import { useTodoStore } from '../stores/todos';
+  import { useTodosStore } from '../stores/todos';
+  import { useProcessStore } from '../stores/process';
 
+  const storeProcess = useProcessStore();
+  const {setIsAddNewTodoActive} = storeProcess;
 
-  const onButtonAddTodoHandler = (evt: Event) => {
-    console.log('clicked')
+  const storeTodos = useTodosStore();
+  const {fetchTodos} = storeTodos;
+
+  const onButtonAddTodoHandler = () => {
+    setIsAddNewTodoActive();
   };
-
-  const store = useTodoStore();
-
-  const {fetchTodos} = store;
 
   onMounted(() => {
     fetchTodos();

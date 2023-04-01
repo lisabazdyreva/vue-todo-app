@@ -1,16 +1,29 @@
 <script setup lang="ts">
+  import { ref } from 'vue';
+  import { useTodosStore } from '../../../stores/todos';
+  import { storeToRefs } from 'pinia';
+  import { useProcessStore } from '../../../stores/process';
+
   import SaveTodoButton from '@/components/todo/todo-buttons/save-todo-button.vue';
   import CancelTodoButton from '@/components/todo/todo-buttons/cancel-todo-button.vue';
-  import { ref } from 'vue';
+
+  const storeTodos = useTodosStore();
+  const {addTodo} = storeTodos;
+  const {todos} = storeToRefs(storeTodos);
+
+  const storeProcess = useProcessStore();
+  const {resetIsAddNewTodoActive} = storeProcess;
 
   const todoTitle = ref('');
 
   const onButtonSaveClickHandler = () => {
-    console.log('clicked')
+    addTodo({id: todos.value.length, title: todoTitle.value, description: 'hi', completed: false});
+    resetIsAddNewTodoActive();
     todoTitle.value = '';
   };
 
   const onButtonCancelClickHandler = () => {
+    resetIsAddNewTodoActive();
     todoTitle.value = '';
   };
 </script>
