@@ -1,22 +1,30 @@
-<script lang='ts' setup>
+<script lang="ts" setup>
   import Header from '@/components/main-header/main-header.vue';
 
   import { useLightModeStore } from './stores/light-mode';
   import { storeToRefs } from 'pinia';
+  import { useTodosStore } from './stores/todos';
+  import { onMounted } from 'vue';
 
-  const store = useLightModeStore();
+  const storeMode = useLightModeStore();
+  const { isLight } = storeToRefs(storeMode);
 
-  const { isLight } = storeToRefs(store);
+  const storeTodos = useTodosStore();
+  const { fetchTodos } = storeTodos;
+
+  onMounted(() => {
+    fetchTodos();
+  });
 </script>
 
 <template>
   <div
-    class='content-wrapper'
+    class="content-wrapper"
     :class="[isLight ? 'content-wrapper--light' : 'content-wrapper--dark']"
   >
     <Header />
     <RouterView />
-    <footer class='footer body__footer'>App with Vue 3</footer>
+    <footer class="footer body__footer">App with Vue 3</footer>
   </div>
 </template>
 

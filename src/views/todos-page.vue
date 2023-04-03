@@ -1,26 +1,19 @@
 <script setup lang="ts">
-  import TodoList from '@/components/todo-list/todo-list.vue';
+  import TodoList from '@/components/todos/todo-list/todo-list.vue';
   import Pagination from '@/components/todos-pagination/todos-pagination.vue';
   import { onMounted } from 'vue';
   import { useTodosStore } from '../stores/todos';
   import { useProcessStore } from '../stores/process';
   import Sorting from '@/components/sorting/sorting.vue';
   import Filter from '@/components/filter/filter.vue';
-  import DisplayModeButton from '@/components/todo-buttons/display-mode-button.vue';
+  import Todos from '@/components/todos/todos.vue';
 
   const storeProcess = useProcessStore();
   const { setIsAddNewTodoActive } = storeProcess;
 
-  const storeTodos = useTodosStore();
-  const { fetchTodos } = storeTodos;
-
   const onButtonAddTodoHandler = () => {
     setIsAddNewTodoActive();
   };
-
-  onMounted(() => {
-    fetchTodos();
-  });
 </script>
 
 <template>
@@ -34,8 +27,7 @@
 
     <Sorting />
     <Filter />
-    <DisplayModeButton />
-    <TodoList />
+    <Todos />
     <Pagination />
   </main>
 </template>
@@ -49,7 +41,7 @@
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
-    width: 50%;
+    width: 70%;
   }
 
   .main__wrapper {

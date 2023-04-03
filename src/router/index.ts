@@ -1,7 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router';
+
 import TodosPage from '../views/todos-page.vue';
 import LoginPage from '../views/login-page.vue';
 import AboutPage from '../views/about-page.vue';
+import SettingsPage from '../views/settings-page.vue';
+
 import { Route } from '../utils/const';
 
 const router = createRouter({
@@ -26,6 +29,11 @@ const router = createRouter({
       path: Route.About,
       name: 'about',
       component: AboutPage,
+    },
+    {
+      path: Route.Settings,
+      name: 'settings',
+      component: SettingsPage,
     },
   ],
 });

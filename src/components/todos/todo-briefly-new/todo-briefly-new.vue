@@ -1,11 +1,11 @@
 <script setup lang="ts">
   import { ref } from 'vue';
-  import { useTodosStore } from '../../stores/todos';
+  import { useTodosStore } from '../../../stores/todos';
   import { storeToRefs } from 'pinia';
-  import { useProcessStore } from '../../stores/process';
+  import { useProcessStore } from '../../../stores/process';
 
-  import SaveTodoButton from '@/components/todo-buttons/save-todo-button.vue';
-  import CancelTodoButton from '@/components/todo-buttons/cancel-todo-button.vue';
+  import SaveTodoButton from '@/components/todos/todo-buttons/save-todo-button.vue';
+  import CancelTodoButton from '@/components/todos/todo-buttons/cancel-todo-button.vue';
 
   const storeTodos = useTodosStore();
   const { addTodo } = storeTodos;

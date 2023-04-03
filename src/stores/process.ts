@@ -1,9 +1,10 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import { TodoListView } from '../utils/const';
 
 export const useProcessStore = defineStore('process', () => {
   const isAddNewTodoActive = ref(false);
-  const isBrieflyTodoDisplay = ref(true);
+  const displayModeTodo = ref<(typeof TodoListView)[keyof typeof TodoListView]>(TodoListView.Cards);
 
   const setIsAddNewTodoActive = () => {
     isAddNewTodoActive.value = true;
@@ -13,15 +14,15 @@ export const useProcessStore = defineStore('process', () => {
     isAddNewTodoActive.value = false;
   };
 
-  const toggleIsBrieflyTodoDisplay = () => {
-    isBrieflyTodoDisplay.value = !isBrieflyTodoDisplay.value;
+  const setDisplayModeTodo = (mode: (typeof TodoListView)[keyof typeof TodoListView]) => {
+    displayModeTodo.value = mode;
   };
 
   return {
     isAddNewTodoActive,
-    isBrieflyTodoDisplay,
+    displayModeTodo,
     setIsAddNewTodoActive,
     resetIsAddNewTodoActive,
-    toggleIsBrieflyTodoDisplay,
+    setDisplayModeTodo,
   };
 });

@@ -17,6 +17,10 @@
       </li>
 
       <li class="navigation-list__item">
+        <RouterLink class="navigation-list__link" :to="Route.Settings">Settings</RouterLink>
+      </li>
+
+      <li class="navigation-list__item">
         <RouterLink class="navigation-list__link" :to="Route.About">About</RouterLink>
       </li>
     </ul>

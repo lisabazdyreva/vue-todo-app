@@ -1,6 +1,8 @@
-<script setup lang='ts'></script>
+<script setup lang="ts"></script>
 <template>
-  <button class='button remove-button' type='button' @click='$emit("removeButtonHandler")'>Remove</button>
+  <button class="button remove-button" type="button" @click="$emit('removeClickHandler')">
+    Remove
+  </button>
 </template>
 
 <style scoped>

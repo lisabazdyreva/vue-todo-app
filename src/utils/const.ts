@@ -1,8 +1,11 @@
+export const TODOS_PER_PAGE = 6;
+
 export const Route = {
   Home: '/',
   Todos: '/todos',
   Login: '/login',
   About: '/about',
+  Settings: '/settings',
 } as const;
 
 export const SortingValue = {
@@ -17,4 +20,9 @@ export const FilterValue = {
   Planned: 'planned',
   Today: 'today',
   Continuous: 'continuous',
+} as const;
+
+export const TodoListView = {
+  BrieflyList: 'briefly-list',
+  Cards: 'cards',
 } as const;
