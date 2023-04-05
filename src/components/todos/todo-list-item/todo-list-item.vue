@@ -71,7 +71,13 @@
   }
 
   .todo-list__item-title {
+    color: inherit;
+    text-decoration: none;
     text-transform: capitalize;
+  }
+
+  .todo-list__item-title:hover {
+    font-weight: 500;
   }
 
   .todo-list__item-order {

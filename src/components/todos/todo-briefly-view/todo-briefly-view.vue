@@ -8,6 +8,7 @@
 
   import type { Todo } from '../../../types/todo';
   import { useTodosStore } from '../../../stores/todos';
+  import { Route } from '@/utils/const';
 
   const storeTodos = useTodosStore();
   const { toggleCompleted, toggleFavorite } = storeTodos;
@@ -34,10 +35,11 @@
 
       <span class="todo-list__item-order">{{ props.todo.id }}.</span>
       <!--. это не точно, мб порядок-->
-      <span
+      <RouterLink
+        :to="Route.TodoDetailed + props.todo.id"
         class="todo-list__item-title"
         :class="{ 'todo-list__item-title--completed': props.todo.completed }"
-        >{{ props.todo.title }}</span
+        >{{ props.todo.title }}</RouterLink
       >
     </div>
     <div class="todo-list__buttons">

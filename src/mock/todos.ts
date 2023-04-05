@@ -49,7 +49,6 @@ export const todosData: Todos = [
   {
     id: 5,
     title: "Solve a Rubik's cube",
-    description: 'lorem',
     completed: false,
     timeless: true,
     createdTime: '2021-03-12T13:37:27+00:00',

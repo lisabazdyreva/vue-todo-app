@@ -7,6 +7,7 @@ export const Route = {
   About: '/about',
   Settings: '/settings',
   Favorites: '/favorites',
+  TodoDetailed: '/todo/',
 } as const;
 
 export const SortingValue = {

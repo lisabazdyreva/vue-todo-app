@@ -5,6 +5,7 @@ import LoginPage from '../views/login-page.vue';
 import AboutPage from '../views/about-page.vue';
 import SettingsPage from '../views/settings-page.vue';
 import FavoritesPage from '../views/favorites-page.vue';
+import TodoDetailedPage from '../views/todo-detailed-page.vue';
 
 import { Route } from '../utils/const';
 
@@ -40,6 +41,11 @@ const router = createRouter({
       path: Route.Login,
       name: 'login',
       component: LoginPage,
+    },
+    {
+      path: `${Route.TodoDetailed}:id`,
+      name: 'todo',
+      component: TodoDetailedPage,
     },
   ],
 });

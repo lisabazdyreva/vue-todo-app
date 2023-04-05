@@ -1,6 +1,35 @@
 <script setup lang="ts">
   import SaveTodoButton from '@/components/todos/todo-buttons/save-todo-button.vue';
   import CancelTodoButton from '@/components/todos/todo-buttons/cancel-todo-button.vue';
+  import { ref } from 'vue';
+  import { useTodosStore } from '../../../stores/todos';
+  import { storeToRefs } from 'pinia';
+  import { useProcessStore } from '../../../stores/process';
+
+  const todoTitle = ref('');
+
+  const storeTodos = useTodosStore();
+  const { addTodo } = storeTodos;
+  const { todos } = storeToRefs(storeTodos);
+
+  const storeProcess = useProcessStore();
+  const { resetIsAddNewTodoActive } = storeProcess;
+
+  const onButtonSaveClickHandler = () => {
+    addTodo({
+      id: todos.value.length + 1,
+      title: todoTitle.value,
+      description: 'hi',
+      completed: false,
+    });
+    resetIsAddNewTodoActive();
+    todoTitle.value = '';
+  };
+
+  const onButtonCancelClickHandler = () => {
+    resetIsAddNewTodoActive();
+    todoTitle.value = '';
+  };
 </script>
 
 <template>
@@ -40,8 +69,8 @@
     <button type="button">Add to favorite</button>
 
     <div class="buttons">
-      <SaveTodoButton />
-      <CancelTodoButton />
+      <SaveTodoButton @save-click-handler="onButtonSaveClickHandler" />
+      <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
     </div>
   </div>
 </template>
