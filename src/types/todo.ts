@@ -9,6 +9,7 @@ export type Todo = {
     dateFrom: string;
     dateTo: string | null;
   };
+  isFavorite: boolean;
 };
 
 export type Todos = Todo[];

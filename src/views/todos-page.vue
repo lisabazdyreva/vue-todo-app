@@ -18,15 +18,19 @@
 
 <template>
   <main class="main body__main">
+    <h2 class="title main__title">Your todo list of tasks</h2>
+
     <div class="main__wrapper">
-      <h2 class="title main__title">Your todo list of tasks</h2>
-      <button class="create-todo-button button" type="button" @click="onButtonAddTodoHandler">
-        Add new
-      </button>
+      <div class="button-wrapper">
+        <button class="create-todo-button button" type="button" @click="onButtonAddTodoHandler">
+          Add new
+        </button>
+      </div>
+
+      <Filter />
+      <Sorting />
     </div>
 
-    <Sorting />
-    <Filter />
     <Todos />
     <Pagination />
   </main>
@@ -47,6 +51,7 @@
   .main__wrapper {
     display: flex;
     justify-content: space-between;
+    margin-top: 30px;
   }
 
   .title {
@@ -66,5 +71,9 @@
   .create-todo-button {
     background-color: var(--dark-violet);
     color: var(--white);
+  }
+
+  .button-wrapper {
+    width: 20%;
   }
 </style>

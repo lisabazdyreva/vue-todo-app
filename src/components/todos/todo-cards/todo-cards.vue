@@ -28,5 +28,6 @@
     grid-template-columns: 30% 30% 30%;
     justify-content: space-between;
     row-gap: 20px;
+    align-items: stretch;
   }
 </style>

@@ -13,6 +13,7 @@ export const todosData: Todos = [
       dateFrom: '2014-03-12T13:37:27+00:00',
       dateTo: '2014-03-12T13:37:27+00:00',
     },
+    isFavorite: true,
   },
   {
     id: 2,
@@ -25,6 +26,7 @@ export const todosData: Todos = [
       dateFrom: '2020-03-12T13:37:27+00:00',
       dateTo: null,
     },
+    isFavorite: false,
   },
   {
     id: 3,
@@ -33,6 +35,7 @@ export const todosData: Todos = [
     completed: false,
     timeless: true,
     createdTime: '2019-03-12T13:37:27+00:00',
+    isFavorite: false,
   },
   {
     id: 4,
@@ -41,6 +44,7 @@ export const todosData: Todos = [
     completed: false,
     timeless: true,
     createdTime: '2022-03-12T13:37:27+00:00',
+    isFavorite: false,
   },
   {
     id: 5,
@@ -49,5 +53,24 @@ export const todosData: Todos = [
     completed: false,
     timeless: true,
     createdTime: '2021-03-12T13:37:27+00:00',
+    isFavorite: false,
+  },
+  {
+    id: 6,
+    title: 'Ullam ratione quibusd',
+    description: 'qui ullam ratione quibusdam voluptatem quia omnis',
+    completed: false,
+    timeless: true,
+    createdTime: '2021-03-12T13:37:27+00:00',
+    isFavorite: false,
+  },
+  {
+    id: 7,
+    title: 'suscipit',
+    description: 'suscipit repellat esse quibusdam voluptatem incidunt',
+    completed: true,
+    timeless: true,
+    createdTime: '2021-03-12T13:37:27+00:00',
+    isFavorite: false,
   },
 ];

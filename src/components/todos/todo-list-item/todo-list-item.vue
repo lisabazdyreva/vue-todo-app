@@ -81,5 +81,6 @@
   .todo-list__buttons {
     display: flex;
     gap: 5px;
+    align-items: center;
   }
 </style>

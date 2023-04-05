@@ -1,5 +1,6 @@
 <script setup lang="ts">
-  import { ref, watch } from 'vue';
+  import { ref } from 'vue';
+
   import { SortingValue } from '../../utils/const';
   import { SortingType } from '../../types';
   import { useTodosStore } from '../../stores/todos';
@@ -9,7 +10,7 @@
   const storeTodos = useTodosStore();
   const { sortTodos } = storeTodos;
 
-  const onRadioSortingChangeHandler = (evt: Event) => {
+  const onSelectSortingChangeHandler = (evt: Event) => {
     const target = evt.target as HTMLInputElement;
 
     if (sortType.value === target.value) {
@@ -23,55 +24,42 @@
 
 <template>
   <div class="sorting">
-    <input
-      class="sorting__input"
-      :id="SortingValue.Default"
-      name="sort"
-      type="radio"
-      :value="SortingValue.Default"
-      @change="onRadioSortingChangeHandler"
-      checked
-    />
-    <label class="sorting__label" :for="SortingValue.Default">по идентификатору</label>
-
-    <input
-      class="sorting__input"
-      :id="SortingValue.Alphabet"
-      name="sort"
-      type="radio"
-      :value="SortingValue.Alphabet"
-      @change="onRadioSortingChangeHandler"
-    />
-    <label class="sorting__label" :for="SortingValue.Alphabet">по алфавиту</label>
-
-    <input
-      class="sorting__input"
-      :id="SortingValue.Oldest"
-      name="sort"
-      type="radio"
-      :value="SortingValue.Oldest"
-      @change="onRadioSortingChangeHandler"
-    />
-    <label class="sorting__label" :for="SortingValue.Oldest">сначала старые</label>
-
-    <input
-      class="sorting__input"
-      :id="SortingValue.Latest"
-      name="sort"
-      type="radio"
-      :value="SortingValue.Latest"
-      @change="onRadioSortingChangeHandler"
-    />
-    <label class="sorting__label" :for="SortingValue.Latest">сначала новые</label>
+    <span class="sorting__title">Set sorting:</span>
+    <select class="sorting__select" @change="onSelectSortingChangeHandler">
+      <option class="sorting__option" disabled value="">Select sorting type</option>
+      <option class="sorting__option" :value="SortingValue.Default">by id</option>
+      <option class="sorting__option" :value="SortingValue.Alphabet">alphabetically</option>
+      <option class="sorting__option" :value="SortingValue.Oldest">from oldest</option>
+      <option class="sorting__option" :value="SortingValue.Latest">from latest</option>
+    </select>
   </div>
 </template>
 
 <style>
-  .sorting__input {
+  .sorting {
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .sorting__title {
+    margin-right: 10px;
+  }
+
+  .sorting__select {
+    font-size: inherit;
+    font-family: inherit;
+    padding: 5px 10px;
+    border-color: var(--semi-dark-violet);
+    border-width: 2px;
+    border-radius: 5px;
     cursor: pointer;
   }
 
-  .sorting__label {
-    cursor: pointer;
+  .sorting__option:disabled {
+    height: 30px;
+    background-color: var(--semi-dark-violet);
+    color: var(--white);
   }
 </style>

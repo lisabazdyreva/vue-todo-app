@@ -37,6 +37,8 @@
       <input type="text" name="date-to" id="date-to" />
     </fieldset>
 
+    <button type="button">Add to favorite</button>
+
     <div class="buttons">
       <SaveTodoButton />
       <CancelTodoButton />

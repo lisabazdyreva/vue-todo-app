@@ -10,10 +10,11 @@
   const { isLight } = storeToRefs(storeMode);
 
   const storeTodos = useTodosStore();
-  const { fetchTodos } = storeTodos;
+  const { fetchTodos, setFavorites } = storeTodos;
 
   onMounted(() => {
     fetchTodos();
+    setFavorites();
   });
 </script>
 
@@ -41,6 +42,7 @@
     display: flex;
     flex: 0 0 auto;
     padding: 20px;
+    pointer-events: none;
   }
 
   .content-wrapper--dark .footer {

@@ -8,13 +8,13 @@ import { SortingValue } from '../utils/const';
 
 export const useTodosStore = defineStore('todos', () => {
   const todos = ref<Todos>([]);
+  const favoriteTodos = ref<Todos>([]);
 
   const fetchTodos = () => {
     todos.value = todosData;
   };
 
   const addTodo = (todo: Todo) => {
-    console.log(todos);
     todos.value.push(todo);
   };
 
@@ -63,5 +63,32 @@ export const useTodosStore = defineStore('todos', () => {
     }
   };
 
-  return { todos, fetchTodos, addTodo, removeTodo, editTodo, sortTodos };
+  const toggleCompleted = (todo: Todo) => {
+    const newTodo = { ...todo, completed: !todo.completed };
+    editTodo(newTodo);
+  };
+
+  const setFavorites = () => {
+    favoriteTodos.value = todos.value.filter((todo) => todo.isFavorite);
+  };
+
+  const toggleFavorite = (todo: Todo) => {
+    const newTodo = { ...todo, isFavorite: !todo.isFavorite };
+
+    editTodo(newTodo);
+    setFavorites();
+  };
+
+  return {
+    todos,
+    favoriteTodos,
+    fetchTodos,
+    addTodo,
+    removeTodo,
+    editTodo,
+    sortTodos,
+    toggleCompleted,
+    setFavorites,
+    toggleFavorite,
+  };
 });

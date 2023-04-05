@@ -39,8 +39,8 @@
     <input id="title" type="text" v-model="todoTitle" />
 
     <div class="todo-list__buttons">
-      <SaveTodoButton @save-button-handler="onButtonSaveClickHandler" />
-      <CancelTodoButton @cancel-button-handler="onButtonCancelClickHandler" />
+      <SaveTodoButton @save-click-handler="onButtonSaveClickHandler" />
+      <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
     </div>
   </li>
 </template>

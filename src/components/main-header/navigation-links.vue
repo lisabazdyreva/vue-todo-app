@@ -13,7 +13,7 @@
       </li>
 
       <li class="navigation-list__item">
-        <a class="navigation-list__link" href="#">Favorites</a>
+        <RouterLink class="navigation-list__link" :to="Route.Favorites">Favorites</RouterLink>
       </li>
 
       <li class="navigation-list__item">

@@ -6,6 +6,7 @@ export const Route = {
   Login: '/login',
   About: '/about',
   Settings: '/settings',
+  Favorites: '/favorites',
 } as const;
 
 export const SortingValue = {
@@ -25,4 +26,14 @@ export const FilterValue = {
 export const TodoListView = {
   BrieflyList: 'briefly-list',
   Cards: 'cards',
+} as const;
+
+export const FavoriteValue = {
+  Add: 'add',
+  Remove: 'remove',
+} as const;
+
+export const CompleteValue = {
+  Completed: 'completed',
+  InProgress: 'in-progress',
 } as const;
