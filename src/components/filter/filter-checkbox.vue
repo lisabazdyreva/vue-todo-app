@@ -72,6 +72,10 @@
     border-radius: 2px;
   }
 
+  .content-wrapper--dark .filter-custom-checkbox__checkmark:after {
+    opacity: 0.8;
+  }
+
   .filter-custom-checkbox__checkmark:after {
     content: '';
     position: absolute;

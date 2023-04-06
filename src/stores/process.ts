@@ -4,9 +4,7 @@ import { TodoListView } from '../utils/const';
 
 export const useProcessStore = defineStore('process', () => {
   const isAddNewTodoActive = ref(false);
-  const displayModeTodo = ref<(typeof TodoListView)[keyof typeof TodoListView]>(
-    TodoListView.BrieflyList
-  );
+  const displayModeTodo = ref<(typeof TodoListView)[keyof typeof TodoListView]>(TodoListView.Cards);
 
   const setIsAddNewTodoActive = () => {
     isAddNewTodoActive.value = true;

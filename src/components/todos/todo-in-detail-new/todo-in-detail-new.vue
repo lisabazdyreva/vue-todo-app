@@ -1,12 +1,14 @@
 <script setup lang="ts">
   import SaveTodoButton from '@/components/todos/todo-buttons/save-todo-button.vue';
   import CancelTodoButton from '@/components/todos/todo-buttons/cancel-todo-button.vue';
+
   import { ref } from 'vue';
   import { useTodosStore } from '../../../stores/todos';
   import { storeToRefs } from 'pinia';
   import { useProcessStore } from '../../../stores/process';
 
   const todoTitle = ref('');
+  const todoDescription = ref('');
 
   const storeTodos = useTodosStore();
   const { addTodo } = storeTodos;
@@ -15,68 +17,138 @@
   const storeProcess = useProcessStore();
   const { resetIsAddNewTodoActive } = storeProcess;
 
-  const onButtonSaveClickHandler = () => {
+  const onCardAddFormSubmitHandler = () => {
     addTodo({
       id: todos.value.length + 1,
       title: todoTitle.value,
-      description: 'hi',
+      description: todoDescription.value,
       completed: false,
+      isFavorite: false,
+      timeless: true,
+      createdTime: new Date().toISOString(),
     });
     resetIsAddNewTodoActive();
     todoTitle.value = '';
   };
 
   const onButtonCancelClickHandler = () => {
-    resetIsAddNewTodoActive();
     todoTitle.value = '';
+    todoDescription.value = '';
+    resetIsAddNewTodoActive();
   };
 </script>
 
 <template>
   <div class="todo-card-new">
-    <fieldset>
-      <legend>Title and description</legend>
+    <form class="card-add-form" @submit.prevent="onCardAddFormSubmitHandler">
+      <fieldset class="card-add-form__group">
+        <legend class="card-add-form__group-title">Todo description</legend>
 
-      <label for="name">Title</label>
-      <input id="name" type="text" name="title" />
+        <label class="card-add-form__label" for="name">Title:</label>
+        <input
+          class="card-add-form__input"
+          id="name"
+          type="text"
+          name="title"
+          v-model="todoTitle"
+        />
 
-      <label for="description">Description</label>
-      <input id="description" type="text" name="description" />
-    </fieldset>
+        <label class="card-add-form__label" for="description">Description:</label>
+        <textarea
+          class="card-add-form__textarea"
+          id="description"
+          name="description"
+          v-model="todoDescription"
+        ></textarea>
+      </fieldset>
 
-    <fieldset>
-      <legend>Is timeless?</legend>
+      <fieldset class="card-add-form__group">
+        <legend class="card-add-form__group-title">Dates</legend>
 
-      <label for="timeless-true">True</label>
-      <input type="radio" name="timeless" id="timeless-true" value="true" />
+        <label class="card-add-form__label">Date from:</label>
+        <input class="card-add-form__input" type="text" name="date-from" id="date-from" />
 
-      <label for="timeless-false">False</label>
-      <input type="radio" name="timeless" id="timeless-false" value="false" />
-    </fieldset>
+        <label class="card-add-form__label">Date to:</label>
+        <input class="card-add-form__input" type="text" name="date-to" id="date-to" />
+      </fieldset>
 
-    <fieldset>
-      <legend>Date from, date to</legend>
-
-      <button type="button">Has date to?</button>
-
-      <label>Date from</label>
-      <input type="text" name="date-from" id="date-from" />
-
-      <label>Date to (not required)</label>
-      <input type="text" name="date-to" id="date-to" />
-    </fieldset>
-
-    <button type="button">Add to favorite</button>
-
-    <div class="buttons">
-      <SaveTodoButton @save-click-handler="onButtonSaveClickHandler" />
-      <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
-    </div>
+      <div class="card-add-form__buttons-wrapper">
+        <SaveTodoButton />
+        <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
+      </div>
+    </form>
   </div>
 </template>
 
 <style scoped>
   .todo-card-new {
-    border: 1px solid var(--dark-violet);
+    box-shadow: 1px 3px 5px var(--shadow-color);
+    border-radius: 5px;
+  }
+
+  .content-wrapper--dark .todo-card-new {
+    background-color: var(--dark-violet);
+  }
+
+  .card-add-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-add-form__group {
+    display: grid;
+    border: none;
+    margin: 0;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  /*.card-add-form__group--one-row {*/
+  /*    grid-template-columns: 1fr 2fr;*/
+  /*    row-gap: 10px;*/
+  /*}*/
+
+  .card-add-form__group--one-row .card-edit-form__group-title {
+    margin-bottom: 20px;
+  }
+
+  .card-add-form__group-title {
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .card-add-form__label {
+    font-weight: 500;
+    text-transform: lowercase;
+    color: var(--dark-violet);
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .card-add-form__input {
+    display: block;
+    font-family: inherit;
+    font-weight: 500;
+    padding: 10px 10px;
+    border: 2px solid var(--semi-dark-violet);
+    border-radius: 5px;
+  }
+
+  .card-add-form__textarea {
+    font-family: inherit;
+    font-weight: 500;
+    border: 2px solid var(--semi-dark-violet);
+    border-radius: 5px;
+    resize: none;
+    padding: 10px 10px;
+  }
+
+  .card-add-form__buttons-wrapper {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 </style>

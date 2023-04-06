@@ -4,7 +4,9 @@
 
 <template>
   <label class="custom-checkbox">
-    <span class="visually-hidden">Set complete</span>
+    <slot>
+      <span class="visually-hidden">Set complete</span>
+    </slot>
     <input
       class="custom-checkbox__input"
       type="checkbox"
@@ -54,6 +56,7 @@
     position: absolute;
     opacity: 0;
     cursor: pointer;
+    margin: 0;
   }
 
   .custom-checkbox__checkmark {

@@ -1,15 +1,14 @@
 <script setup lang="ts">
-  import TodoList from '@/components/todos/todo-list/todo-list.vue';
   import Pagination from '@/components/todos-pagination/todos-pagination.vue';
-  import { onMounted } from 'vue';
-  import { useTodosStore } from '../stores/todos';
   import { useProcessStore } from '../stores/process';
   import Sorting from '@/components/sorting/sorting.vue';
   import Filter from '@/components/filter/filter.vue';
   import Todos from '@/components/todos/todos.vue';
+  import { storeToRefs } from 'pinia';
 
   const storeProcess = useProcessStore();
   const { setIsAddNewTodoActive } = storeProcess;
+  const { isAddNewTodoActive } = storeToRefs(storeProcess);
 
   const onButtonAddTodoHandler = () => {
     setIsAddNewTodoActive();
@@ -22,7 +21,12 @@
 
     <div class="main__wrapper">
       <div class="button-wrapper">
-        <button class="create-todo-button button" type="button" @click="onButtonAddTodoHandler">
+        <button
+          class="create-todo-button button"
+          type="button"
+          @click="onButtonAddTodoHandler"
+          :disabled="isAddNewTodoActive"
+        >
           Add new
         </button>
       </div>
@@ -58,10 +62,12 @@
     text-transform: uppercase;
     text-align: center;
     margin: 0;
+    user-select: none;
   }
 
   .content-wrapper--dark .title {
-    color: var(--semi-dark-pink);
+    color: var(--light-pink);
+    opacity: 0.9;
   }
 
   .content-wrapper--light .title {
@@ -71,6 +77,27 @@
   .create-todo-button {
     background-color: var(--dark-violet);
     color: var(--white);
+  }
+
+  .content-wrapper--dark .create-todo-button:hover:not(:disabled) {
+    background-color: var(--semi-dark-violet);
+  }
+
+  .content-wrapper--light .create-todo-button:hover:not(:disabled) {
+    background-color: var(--dark-violet-hover);
+    color: var(--light-pink);
+  }
+
+  .content-wrapper--dark .create-todo-button:disabled {
+    background-color: var(--gray);
+    opacity: 0.8;
+    color: var(--dark-violet);
+    cursor: not-allowed;
+  }
+
+  .content-wrapper--light .create-todo-button:disabled {
+    background-color: var(--gray);
+    cursor: not-allowed;
   }
 
   .button-wrapper {

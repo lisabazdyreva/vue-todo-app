@@ -41,11 +41,11 @@
       <TodoRegularCheckbox
         @change-handler="onCompleteButtonClickHandler"
         :is-completed="props.todo.completed"
-      />
-      <span class="todo-card__completed-title">
-        {{ props.todo.completed ? CompleteValue.Completed : CompleteValue.InProgress }}
-      </span>
-
+      >
+        <span>
+          {{ props.todo.completed ? CompleteValue.Completed : CompleteValue.InProgress }}
+        </span>
+      </TodoRegularCheckbox>
       <RouterLink :to="Route.TodoDetailed + props.todo.id">Go to detailed>></RouterLink>
     </p>
 
@@ -75,6 +75,10 @@
     justify-content: space-between;
   }
 
+  .content-wrapper--dark .todo-card {
+    background-color: var(--dark-violet);
+  }
+
   .todo-card__title {
     box-sizing: border-box;
     background-color: var(--semi-dark-violet);
@@ -88,6 +92,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .content-wrapper--dark .todo-card__title {
+    background-color: var(--semi-dark-violet);
   }
 
   .todo-card__title--completed {
@@ -104,9 +112,27 @@
     margin: 20px 10px;
   }
 
+  .content-wrapper--dark .todo-card__description {
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .todo-card__description {
+    color: var(--dark-violet);
+  }
+
   .todo-card__user-actions {
     margin: 20px 10px;
     user-select: none;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content-wrapper--dark .todo-card__user-actions {
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .todo-card__user-actions {
+    color: var(--dark-violet);
   }
 
   .todo-card__completed-title {

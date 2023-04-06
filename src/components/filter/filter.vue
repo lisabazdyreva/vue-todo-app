@@ -16,4 +16,12 @@
     justify-content: flex-start;
     gap: 20px;
   }
+
+  .content-wrapper--dark .filter {
+    color: var(--dark-violet-theme-color);
+  }
+
+  .content-wrapper--light .filter {
+    color: var(--dark-violet);
+  }
 </style>

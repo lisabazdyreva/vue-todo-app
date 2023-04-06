@@ -49,7 +49,15 @@
     color: var(--dark-violet-theme-color);
   }
 
+  .content-wrapper--dark .navigation-list__link:hover {
+    color: var(--pink);
+  }
+
   .content-wrapper--light .navigation-list__link {
     color: var(--white);
+  }
+
+  .content-wrapper--light .navigation-list__link:hover {
+    color: var(--dark-violet);
   }
 </style>

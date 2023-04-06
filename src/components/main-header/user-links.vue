@@ -32,7 +32,15 @@
     color: var(--dark-violet-theme-color);
   }
 
+  .content-wrapper--dark .login-link:hover {
+    color: var(--pink);
+  }
+
   .content-wrapper--light .login-link {
     color: var(--white);
+  }
+
+  .content-wrapper--light .login-link:hover {
+    color: var(--dark-violet);
   }
 </style>

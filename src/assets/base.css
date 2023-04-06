@@ -1,15 +1,17 @@
 :root {
   /* violet theme */
   --dark-violet-theme-bg: #100e1a;
-  --dark-violet-theme-color: #f6d9fa;
+  --dark-violet-theme-color: #f3e9f4;
   --deep-dark-violet: #272040;
   --dark-violet: #31294c;
+  --dark-violet-hover: #1d182e;
   --dark-violet-transparent: rgba(49, 41, 76, 0.2);
   --semi-dark-violet: #5756bb;
   --violet-blue: #8182da;
   --violet: #a18ddd;
   --semi-dark-pink: #d3a3da;
   --pink: #e1b1e8;
+  --light-pink: #fbe7fe;
   --white: #ffffff;
   --shadow-color: rgba(49, 41, 76, 0.5);
   --gray: #eeeeee;

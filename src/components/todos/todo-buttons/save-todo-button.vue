@@ -1,8 +1,10 @@
 <script setup lang="ts"></script>
 
 <template>
-  <button class="button save-button" type="button" @click="$emit('saveClickHandler')">Save</button>
+  <button class="button save-button" type="submit">Save</button>
 </template>
+
+<!--@click="$emit('saveClickHandler')"-->
 
 <style scoped>
   .content-wrapper--dark .save-button {

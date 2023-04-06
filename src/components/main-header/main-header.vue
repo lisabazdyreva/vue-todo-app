@@ -73,8 +73,18 @@
     color: var(--white);
   }
 
+  .content-wrapper--dark .light-mode-button:hover {
+    background-color: var(--semi-dark-violet);
+    color: var(--light-pink);
+  }
+
   .content-wrapper--light .light-mode-button {
     background-color: var(--dark-violet);
     color: var(--white);
+  }
+
+  .content-wrapper--light .light-mode-button:hover {
+    background-color: var(--dark-violet-hover);
+    color: var(--light-pink);
   }
 </style>

@@ -15,13 +15,17 @@
   const { resetIsAddNewTodoActive } = storeProcess;
 
   const todoTitle = ref('');
+  const todoDescription = ref('');
 
   const onButtonSaveClickHandler = () => {
     addTodo({
       id: todos.value.length + 1,
       title: todoTitle.value,
-      description: 'hi',
+      description: todoDescription.value,
       completed: false,
+      timeless: true,
+      createdTime: new Date().toISOString(),
+      isFavorite: false,
     });
     resetIsAddNewTodoActive();
     todoTitle.value = '';
@@ -35,14 +39,78 @@
 
 <template>
   <li class="todo-list__item">
-    <label for="title">Title:</label>
-    <input id="title" type="text" v-model="todoTitle" />
+    <form class="todo-add-form">
+      <fieldset class="todo-add-form__group">
+        <legend class="todo-add-form__group-title">Todo description</legend>
 
-    <div class="todo-list__buttons">
-      <SaveTodoButton @save-click-handler="onButtonSaveClickHandler" />
-      <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
-    </div>
+        <label class="todo-add-form__label" for="title">Title:</label>
+        <input class="todo-add-form__input" id="title" type="text" v-model="todoTitle" />
+
+        <label class="todo-add-form__label">Description:</label>
+        <textarea
+          class="todo-add-form__textarea"
+          id="description"
+          v-model="todoDescription"
+        ></textarea>
+      </fieldset>
+
+      <fieldset class="todo-add-form__group">
+        <legend class="todo-add-form__group-title">Dates</legend>
+
+        <label class="todo-add-form__label" for="title">Date from:</label>
+        <input class="todo-add-form__input" type="text" />
+
+        <label class="todo-add-form__label" for="title">Date to:</label>
+        <input class="todo-add-form__input" type="text" />
+      </fieldset>
+
+      <div class="todo-list__buttons">
+        <SaveTodoButton @save-click-handler="onButtonSaveClickHandler" />
+        <CancelTodoButton @cancel-click-handler="onButtonCancelClickHandler" />
+      </div>
+    </form>
   </li>
 </template>
 
-<style scoped></style>
+<style scoped>
+  .todo-add-form {
+    width: 100%;
+    display: flex;
+  }
+
+  .todo-add-form__group {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    border: none;
+  }
+
+  .todo-add-form__group-title {
+    text-transform: uppercase;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  .todo-add-form__label {
+    text-transform: lowercase;
+    margin-top: 20px;
+  }
+
+  .todo-add-form__input {
+    font-family: inherit;
+    padding: 5px 10px;
+    border: 2px solid var(--semi-dark-violet);
+    border-radius: 5px;
+    color: var(--dark-violet);
+  }
+
+  .todo-add-form__textarea {
+    font-family: inherit;
+    padding: 5px 10px;
+    border: 2px solid var(--semi-dark-violet);
+    border-radius: 5px;
+    resize: none;
+    color: var(--dark-violet);
+    line-height: inherit;
+  }
+</style>
