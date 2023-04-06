@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { ref } from 'vue';
+  import { computed, ref } from 'vue';
 
   import EditTodoButton from '@/components/todos/todo-buttons/edit-todo-button.vue';
   import RemoveTodoButton from '@/components/todos/todo-buttons/remove-todo-button.vue';
@@ -23,6 +23,24 @@
   const onFavoriteCheckboxChangeHandler = () => {
     toggleFavorite(props.todo);
   };
+
+  const computedDateFrom = computed(() => {
+    const dateFrom = props.todo.dates?.dateFrom;
+
+    if (dateFrom) {
+      const valueDateFrom = new Date(dateFrom);
+      return Intl.DateTimeFormat('en-US').format(valueDateFrom);
+    }
+  });
+
+  const computedDateTo = computed(() => {
+    const dateTo = props.todo.dates?.dateTo;
+
+    if (dateTo) {
+      const valueDateTo = new Date(dateTo);
+      return Intl.DateTimeFormat('en-US').format(valueDateTo);
+    }
+  });
 </script>
 
 <template>
@@ -41,6 +59,10 @@
         :class="{ 'todo-list__item-title--completed': props.todo.completed }"
         >{{ props.todo.title }}</RouterLink
       >
+    </div>
+    <div v-if="props.todo.dates">
+      <span>from {{ computedDateFrom }}</span>
+      <span> to {{ computedDateTo }}</span>
     </div>
     <div class="todo-list__buttons">
       <TodoFavoriteCheckbox

@@ -8,10 +8,10 @@ export const todosData: Todos = [
       'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam consequuntur doloremque, eaque esse eveniet harum illum laboriosam magnam maiores, modi nemo officiis quibusdam, quos saepe sint tempore unde voluptatem?',
     completed: true,
     timeless: false,
-    createdTime: '2014-03-12T13:37:27+00:00',
+    createdTime: '2014-03-12T13:37:27',
     dates: {
-      dateFrom: '2014-03-12T13:37:27+00:00',
-      dateTo: '2014-03-12T13:37:27+00:00',
+      dateFrom: '2014-03-12T13:37:27',
+      dateTo: '2014-03-12T13:37:27',
     },
     isFavorite: true,
   },
@@ -21,10 +21,10 @@ export const todosData: Todos = [
     description: 'lorem',
     completed: false,
     timeless: false,
-    createdTime: '2020-03-12T13:37:27+00:00',
+    createdTime: '2020-03-12T13:37:27',
     dates: {
-      dateFrom: '2020-03-12T13:37:27+00:00',
-      dateTo: null,
+      dateFrom: '2020-03-12T13:37:27',
+      dateTo: '2020-03-12T13:37:27',
     },
     isFavorite: false,
   },
@@ -34,7 +34,7 @@ export const todosData: Todos = [
     description: 'lorem',
     completed: false,
     timeless: true,
-    createdTime: '2019-03-12T13:37:27+00:00',
+    createdTime: '2019-03-12T13:37:27',
     isFavorite: false,
   },
   {
@@ -43,7 +43,7 @@ export const todosData: Todos = [
     description: 'lorem',
     completed: false,
     timeless: true,
-    createdTime: '2022-03-12T13:37:27+00:00',
+    createdTime: '2022-03-12T13:37:27',
     isFavorite: false,
   },
   {
@@ -51,7 +51,7 @@ export const todosData: Todos = [
     title: "Solve a Rubik's cube",
     completed: false,
     timeless: true,
-    createdTime: '2021-03-12T13:37:27+00:00',
+    createdTime: '2021-03-12T13:37:27',
     isFavorite: false,
   },
   {
@@ -60,7 +60,7 @@ export const todosData: Todos = [
     description: 'qui ullam ratione quibusdam voluptatem quia omnis',
     completed: false,
     timeless: true,
-    createdTime: '2021-03-12T13:37:27+00:00',
+    createdTime: '2021-03-12T13:37:27',
     isFavorite: false,
   },
   {
@@ -69,7 +69,9 @@ export const todosData: Todos = [
     description: 'suscipit repellat esse quibusdam voluptatem incidunt',
     completed: true,
     timeless: true,
-    createdTime: '2021-03-12T13:37:27+00:00',
+    createdTime: '2021-03-12T13:37:27',
     isFavorite: false,
   },
 ];
+
+//WHAT UIS TIMELESS

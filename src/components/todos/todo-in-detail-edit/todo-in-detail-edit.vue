@@ -1,15 +1,40 @@
 <script setup lang="ts">
-  import type { Todo } from '../../../types/todo';
   import { ref } from 'vue';
+
   import SaveTodoButton from '@/components/todos/todo-buttons/save-todo-button.vue';
   import CancelTodoButton from '@/components/todos/todo-buttons/cancel-todo-button.vue';
+
+  import type { Todo } from '../../../types/todo';
+  import { useTodosStore } from '../../../stores/todos';
 
   const props = defineProps<{ todo: Todo }>();
 
   const title = ref(props.todo.title);
   const description = ref(props.todo.description);
 
-  const onEditCardFormSubmitHandler = () => {};
+  const dateFrom = ref(props.todo.dates?.dateFrom);
+  const dateTo = ref(props.todo.dates?.dateTo);
+
+  const storeTodos = useTodosStore();
+  const { addTodo } = storeTodos;
+
+  const onEditCardFormSubmitHandler = () => {
+    const dateFromValue = dateFrom.value || '';
+    const dateToValue = dateTo.value || '';
+
+    const isTimeless = dateFromValue === '' && dateToValue === '';
+
+    addTodo({
+      ...props.todo,
+      title: title.value,
+      description: description.value,
+      dates: {
+        dateFrom: dateFromValue,
+        dateTo: dateToValue,
+      },
+      timeless: isTimeless,
+    });
+  };
 </script>
 
 <template>
@@ -29,15 +54,16 @@
         <legend class="card-edit-form__group-title">Dates</legend>
 
         <label class="card-edit-form__label">Date from:</label>
-        <input class="card-edit-form__input" type="text" />
+        <input class="card-edit-form__input" type="datetime-local" v-model="dateFrom" />
 
         <label class="card-edit-form__label">Date to:</label>
-        <input class="card-edit-form__input" type="text" />
+        <input class="card-edit-form__input" type="datetime-local" v-model="dateTo" />
       </fieldset>
 
       <div class="card-edit-form__buttons-wrapper">
-        <SaveTodoButton @save-click-handler="$emit('saveClickHandler')" />
         <CancelTodoButton @cancel-click-handler="$emit('cancelClickHandler')" />
+        <SaveTodoButton />
+        <!--        @save-click-handler="$emit('saveClickHandler')"-->
       </div>
     </form>
   </div>

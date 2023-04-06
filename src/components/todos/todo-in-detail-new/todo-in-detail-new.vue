@@ -9,6 +9,8 @@
 
   const todoTitle = ref('');
   const todoDescription = ref('');
+  const todoDateFrom = ref('');
+  const todoDateTo = ref('');
 
   const storeTodos = useTodosStore();
   const { addTodo } = storeTodos;
@@ -27,6 +29,8 @@
       timeless: true,
       createdTime: new Date().toISOString(),
     });
+
+    // // new Date(target.value).toISOString();
     resetIsAddNewTodoActive();
     todoTitle.value = '';
   };
@@ -35,6 +39,16 @@
     todoTitle.value = '';
     todoDescription.value = '';
     resetIsAddNewTodoActive();
+  };
+
+  const onDateFromInputHandler = (evt: Event) => {
+    const target = evt.target as HTMLInputElement;
+    todoDateFrom.value = target.value;
+  };
+
+  const onDateToInputHandler = (evt: Event) => {
+    const target = evt.target as HTMLInputElement;
+    todoDateTo.value = target.value;
   };
 </script>
 
@@ -52,6 +66,7 @@
           name="title"
           v-model="todoTitle"
         />
+        <p class="card-add-form__validation-message">Поле обязательно к заполнению</p>
 
         <label class="card-add-form__label" for="description">Description:</label>
         <textarea
@@ -66,10 +81,24 @@
         <legend class="card-add-form__group-title">Dates</legend>
 
         <label class="card-add-form__label">Date from:</label>
-        <input class="card-add-form__input" type="text" name="date-from" id="date-from" />
+        <input
+          class="card-add-form__input"
+          type="datetime-local"
+          name="date-from"
+          id="date-from"
+          :value="todoDateFrom"
+          @input="onDateFromInputHandler"
+        />
 
         <label class="card-add-form__label">Date to:</label>
-        <input class="card-add-form__input" type="text" name="date-to" id="date-to" />
+        <input
+          class="card-add-form__input"
+          type="datetime-local"
+          name="date-to"
+          id="date-to"
+          :value="todoDateTo"
+          @input="onDateToInputHandler"
+        />
       </fieldset>
 
       <div class="card-add-form__buttons-wrapper">
@@ -143,6 +172,12 @@
     border-radius: 5px;
     resize: none;
     padding: 10px 10px;
+  }
+
+  .card-add-form__validation-message {
+    font-size: 10px;
+    margin: 0;
+    text-transform: uppercase;
   }
 
   .card-add-form__buttons-wrapper {

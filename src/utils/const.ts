@@ -38,3 +38,12 @@ export const CompleteValue = {
   Completed: 'completed',
   InProgress: 'in-progress',
 } as const;
+
+export const dateTimeOptions: Intl.DateTimeFormatOptions = {
+  weekday: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  hour: 'numeric',
+  minute: 'numeric',
+};

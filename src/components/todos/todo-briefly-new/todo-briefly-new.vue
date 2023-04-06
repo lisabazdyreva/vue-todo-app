@@ -47,21 +47,22 @@
         <input class="todo-add-form__input" id="title" type="text" v-model="todoTitle" />
 
         <label class="todo-add-form__label">Description:</label>
-        <textarea
-          class="todo-add-form__textarea"
+        <input
+          class="todo-add-form__input"
           id="description"
+          type="text"
           v-model="todoDescription"
-        ></textarea>
+        />
       </fieldset>
 
       <fieldset class="todo-add-form__group">
         <legend class="todo-add-form__group-title">Dates</legend>
 
         <label class="todo-add-form__label" for="title">Date from:</label>
-        <input class="todo-add-form__input" type="text" />
+        <input class="todo-add-form__input" type="datetime-local" />
 
         <label class="todo-add-form__label" for="title">Date to:</label>
-        <input class="todo-add-form__input" type="text" />
+        <input class="todo-add-form__input" type="datetime-local" />
       </fieldset>
 
       <div class="todo-list__buttons">

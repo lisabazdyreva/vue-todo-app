@@ -31,7 +31,7 @@
         />
 
         <label class="todo-edit-form__label">Description:</label>
-        <textarea class="todo-edit-form__textarea" :value="props.todo.description"></textarea>
+        <input type="text" class="todo-edit-form__input" :value="props.todo.description" />
 
         <label class="todo-edit-form__label">
           <input
@@ -49,10 +49,18 @@
         <legend class="todo-edit-form__group-title">Duration</legend>
 
         <label class="todo-edit-form__label">From:</label>
-        <input class="todo-edit-form__input" type="text" :value="props.todo.dates?.dateFrom" />
+        <input
+          class="todo-edit-form__input"
+          type="datetime-local"
+          :value="props.todo.dates?.dateFrom"
+        />
 
         <label class="todo-edit-form__label">To:</label>
-        <input class="todo-edit-form__input" type="text" />
+        <input
+          class="todo-edit-form__input"
+          type="datetime-local"
+          :value="props.todo.dates?.dateTo"
+        />
       </fieldset>
 
       <div class="todo-list__buttons">

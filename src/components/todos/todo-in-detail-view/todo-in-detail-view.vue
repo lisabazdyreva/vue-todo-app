@@ -1,13 +1,15 @@
 <script setup lang="ts">
+  import { computed } from 'vue';
+
   import EditTodoButton from '@/components/todos/todo-buttons/edit-todo-button.vue';
   import RemoveTodoButton from '@/components/todos/todo-buttons/remove-todo-button.vue';
-
-  import type { Todo } from '../../../types/todo';
-  import { CompleteValue, Route } from '../../../utils/const';
-
-  import { useTodosStore } from '../../../stores/todos';
   import TodoRegularCheckbox from '@/components/todos/todo-checkboxes/todo-regular-checkbox.vue';
   import TodoFavoriteCheckbox from '@/components/todos/todo-checkboxes/todo-favorite-checkbox.vue';
+
+  import type { Todo } from '../../../types/todo';
+  import { CompleteValue, Route, dateTimeOptions } from '../../../utils/const';
+
+  import { useTodosStore } from '../../../stores/todos';
 
   const props = defineProps<{ todo: Todo }>();
 
@@ -21,6 +23,22 @@
   const onCompleteButtonClickHandler = () => {
     toggleCompleted(props.todo);
   };
+
+  const dateFrom = computed(() => {
+    const dateFromISO = props.todo.dates?.dateFrom;
+
+    if (dateFromISO) {
+      return new Intl.DateTimeFormat('en-US', dateTimeOptions).format(new Date(dateFromISO));
+    }
+  });
+
+  const dateTo = computed(() => {
+    const dateToISO = props.todo.dates?.dateTo;
+
+    if (dateToISO) {
+      return new Intl.DateTimeFormat('en-US', dateTimeOptions).format(new Date(dateToISO));
+    }
+  });
 </script>
 
 <template>
@@ -50,8 +68,8 @@
     </p>
 
     <div v-if="props.todo.dates?.dateFrom" class="todo-card__dates">
-      <p>From: {{ props.todo?.dates?.dateTo }}</p>
-      <p v-if="props.todo.dates.dateTo">To: {{ props.todo?.dates?.dateFrom }}</p>
+      <p>From: {{ dateFrom }}</p>
+      <p v-if="props.todo.dates.dateTo">To: {{ dateTo }}</p>
     </div>
 
     <div class="todo-card__buttons">
